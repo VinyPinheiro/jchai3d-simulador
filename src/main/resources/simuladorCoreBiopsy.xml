@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Proposta para o Arquivo de Definição de Cena -->
+
+<!--
+	
+	Esse arquivo DESCREVE uma cena no JCHAI3D, não necessariamente ela vai ser montada conforme
+	a descrição. Por exemplo, nem todos os dispositivos requeridos podem estar presentes ou
+	a configuração de hardware solocitada pode não ser disponível.
+	
+	Em outras palavras, esse arquivo é um roteiro para a montagem de uma cena.
+	
+-->
+
+<scene-def>
+
+	<!--
+		Aqui colocamos meta informações sobre a cena, como autores, título, versão etc.
+	-->
+	<scene-meta>
+		<title>(Grupo JCHAI3D) Simulador Core Biopsy </title>
+		
+		<authors>
+			<author>(Grupo JCHAI3D)Jairo Simão Santana melo [jairossmunb@gmail.com] </author>
+			<author>JCHAI3D Team [http://jchai3d.sf.net]</author>
+		</authors>
+		
+		<version>0.0.1</version>
+		
+		<category>Teste</category>
+
+		<description>Teste de leitura de cenas a partir de arquivos XML</description>
+		
+		<hardware required="true">
+			<graphics-mem>256M</graphics-mem>
+			<memory>1G</memory>
+			<processor>1.2G</processor>
+		</hardware>
+
+	</scene-meta>
+
+	<!-- 
+		Aqui informamos os dispositivos que precisamos
+	
+	<devices>
+		<device type="haptic" name="haptic6" dof="6+" flag="optional" />
+		<device type="haptic" name="haptic3" dof="3+" flag="required" />
+	</devices>
+	-->
+        
+	<!--
+		Finalmente, aqui os elementos da cena são especificados.
+	-->
+	<scene-content>
+
+                <world name="mundo0">
+			<position>0 0 0</position>
+			<color>0 0 0</color>
+		</world>
+                
+                <operation name="oper0">
+                        <rotation>0.0 0.0 1.0</rotation>
+                        <angle>-10</angle>
+                </operation>
+		
+                <operation name="oper1">
+                        <rotation>0.0 1.0 0.0</rotation>
+                        <angle>10</angle>
+                </operation>
+                
+		<light name="light0">
+                        <enabled>true</enabled>
+			<ambient>0.3 0.8 0.8</ambient>
+			<diffuse>0.0 0.5 0.5</diffuse>
+			<specular>0.0 0.5 0.5</specular>
+			<position>2.0 0.5 1.0</position>
+			<direction>-2.0 0.5 1.0</direction>
+		</light>
+
+                <childs-2d-front name="childs-2d-front0">
+                        <file>logo.png</file>
+			<position>2.0 0.5 1.0</position>
+                        <transparencyEnabled>true</transparencyEnabled>
+		</childs-2d-front>
+                
+                <material name="material0">
+                        <enabled>true</enabled>
+                        <ambient>1.0 0.0 0.0</ambient>
+			<diffuse>0.0 0.0 0.0</diffuse>
+			<specular>0.0 0.0 0.0</specular>
+                        <emission>0.0 0.0 0.0</emission>
+                        <shininess>0</shininess>
+                        <transparencyLevel>0.5</transparencyLevel>
+                        <vibrationAmplitude>0.5</vibrationAmplitude>
+                        <vibrationFrequency>0.5</vibrationFrequency>
+                        <viscosity>0.5</viscosity>
+                        <dynamicFriction>0.5</dynamicFriction>
+                        <magnetMaxDistance>0.5</magnetMaxDistance>
+                        <magnetMaxForce>0.5</magnetMaxForce>
+		</material>
+                
+                <material name="material1">
+                        <enabled>true</enabled>
+                        <ambient>1.0 0.0 0.0</ambient>
+			<diffuse>0.0 0.0 1.0</diffuse>
+			<specular>1.0 0.0 0.0</specular>
+                        <emission>0.0 0.0 1.0</emission>
+                        <shininess>0</shininess>
+                        <transparencyLevel>0.5</transparencyLevel>
+                        <vibrationAmplitude>0.5</vibrationAmplitude>
+                        <vibrationFrequency>0.5</vibrationFrequency>
+                        <viscosity>0.5</viscosity>
+                        <dynamicFriction>0.5</dynamicFriction>
+                        <magnetMaxDistance>0.5</magnetMaxDistance>
+                        <magnetMaxForce>0.5</magnetMaxForce>
+		</material>
+                
+		<mesh name="mesh0">
+			<file>MamaComTumorOK.obj</file>
+                        <enabled>true</enabled>
+                        <frame-visible>false</frame-visible>
+                        <normals-visible>false</normals-visible>
+                        <wire-mode>true</wire-mode>
+                        <bbox-visible>true</bbox-visible>
+                        <bbox-tree-visible>false</bbox-tree-visible>
+                        <culling-enabled>true</culling-enabled>
+                        <display-list-enabled>true</display-list-enabled>
+                        <vertex-colors-enabled>true</vertex-colors-enabled>
+                        <transparency-enabled>true</transparency-enabled>
+                        <computeBoundaryBox>true</computeBoundaryBox>
+                        <transparency-level>0.1</transparency-level>
+                        <stiffness>0.5</stiffness>
+			<position>-20 0 0</position>
+                        <operation>oper0</operation>
+                        <operation>oper1</operation>
+                        <material>material1</material>
+                        <scale-factor>1</scale-factor>
+		</mesh>
+
+<!--
+                <mesh name="mesh1">
+			<file>Pistola2.obj</file>
+			<position>0.6 0.9 0.7</position>
+                        <wire>true</wire>
+                        <normal>false</normal>
+                        <tree>false</tree>
+                        <box>false</box>
+                        <material>material1</material>
+		</mesh>
+-->
+
+		<label name="label0">
+                        <enabled>true</enabled>
+			<text>JCHAI3D 1.0 </text>
+			<position>100 0 0</position>
+			<color>1 0 0</color>
+		</label>
+
+		<camera name="camera0">
+			<!--fov>45</fov-->
+			<world>world0</world>
+			<near>0.0001</near>
+			<far>100000.0</far>
+			<position>3.0 0.0 0.0</position>
+			<direction>0.0 0.0 0.0</direction>
+			<orientation>0.0 0.0 1.0</orientation>
+                        <multipassTransparency>true</multipassTransparency>
+			<childs-2d-front>childs-2d-front0</childs-2d-front>
+		</camera>
+
+<!--
+		<tool name="tool0">
+			<device>haptic6</device>
+                        <description>Agulha de Biopsia</description>
+			<mesh>mesh1</mesh>			
+		</tool>
+-->
+		<world name="mundo0">
+			<child>mesh0</child>
+			<child>label0</child>
+                        <child>light0</child>
+		</world>
+
+                <viewport name="view0">
+                        <enabled>true</enabled>
+			<fps>true</fps>
+                        <stereoOn>false</stereoOn>
+                        <world>mundo0</world>
+		</viewport>
+		
+	</scene-content>
+
+</scene-def>
